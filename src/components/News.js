@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import NewsItem from "./NewsItem";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Container = styled.div`
   .loader-text {
@@ -39,26 +40,50 @@ function News(props) {
   const [articles, setArticles] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
   const [page, setPage] = useState(1);
+  const { language } = useLanguage();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+ 
+  useEffect(() => {
+    fetchNews();
+  }, [language]); 
 
   const fetchNews = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&page=${page}&apiKey=b36fa50bbc524b4696ccb303c1d4772a`;
+    setLoading(true);
+    setError(null);
+    try{
+    const url = `https://newsapi.org/v2/top-headlines?country=${language}&category=${category}&page=${page}&apiKey=ecfaf9eaaa8d40a5b5d769210f5ee616`;
     const data = await fetch(url);
     const parsedData = await data.json();
+    console.log(parsedData);
     setArticles(parsedData.articles);
     setTotalResults(parsedData.totalResults);
-  };
+  } catch (error) {
+    console.error("Error fetching news:", error); 
+    setError(error.message);
+
+  }
+  setLoading(false);
+};
 
   useEffect(() => {
     fetchNews();
   }, []);
 
   const fetchData = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&page=${page + 1}&apiKey=b36fa50bbc524b4696ccb303c1d4772a`;
+    setLoading(true);
+    setError(null);
+    try {
+    const url = `https://newsapi.org/v2/top-headlines?country=${language}&category=${category}&page=${page + 1}&apiKey=ecfaf9eaaa8d40a5b5d769210f5ee616`;
     setPage(page + 1);
     const data = await fetch(url);
     const parsedData = await data.json();
     setArticles(articles.concat(parsedData.articles));
-  };
+  }catch (error) {
+    setError(error.message);
+  }
+  setLoading(false);
+};
 
   return (
     <Container>
@@ -85,6 +110,8 @@ function News(props) {
           </Row>
         </div>
       </InfiniteScroll>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
     </Container>
   );
 }

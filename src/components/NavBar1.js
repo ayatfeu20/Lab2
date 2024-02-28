@@ -22,7 +22,7 @@ function NavBar1() {
         <nav className="navbar">
           <div className="container-fluid">
             <a className="navbar-brand" href="/">
-              Nyheter App
+              Akhbar news App
             </a>
           </div>
         </nav>

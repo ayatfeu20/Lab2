@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-
+import { useLanguage } from '../contexts/LanguageContext';
 
 const StyledNavBar = styled.nav`
-  background-color: #f8f9fa; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  
 `;
 
 const Container = styled.div`
@@ -29,20 +32,42 @@ const NavItem = styled.li`
 `;
 
 const NavLink = styled(Link)`
-  color: #000; /* Set your desired text color */
+  color: #000; 
   text-decoration: none;
 
   &:hover {
-    color: #007bff; /* Set your desired hover color */
+    color: #007bff; 
+    font-weight: bold;
   }
 
   &.active {
-    color: #007bff; /* Set your desired active link color */
+    color: #007bff; 
+    font-weight: bold;
+  }
+`;
+
+const LanguageLinks = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left:25rem;
+`;
+
+const LanguageLink = styled(Link)`
+  margin-left: 20px;
+  text-decoration: none;
+  color: #000;
+  &:hover {
+    color: #007bff; 
     font-weight: bold;
   }
 `;
 
 function NavBar2() {
+    const { setLanguage } = useLanguage();
+
+    const switchLanguage = (lang) => {
+       setLanguage(lang);
+    };
   return (
     <StyledNavBar className="navbar navbar-expand-lg">
       <Container className="container-fluid">
@@ -58,7 +83,7 @@ function NavBar2() {
           <span className="navbar-toggler-icon"></span>
         </ToggleButton>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <NavList className="navbar-nav">
+          <NavList className="navbar-nav me-auto">
             <NavItem>
               <NavLink className="nav-link" to={`/`} aria-current="page">
                 Home
@@ -94,19 +119,12 @@ function NavBar2() {
                 Science
               </NavLink>
             </NavItem>
+            <LanguageLinks>
+        <LanguageLink to="#" onClick={() => switchLanguage('se')}>Svensk nyheter</LanguageLink>
+        <LanguageLink to="#" onClick={() => switchLanguage('ae')}> أخبار عربية</LanguageLink>
+      </LanguageLinks>
           </NavList>
-          <NavList className="navbar-nav">
-            <NavItem>
-              <NavLink className="nav-link" to="/svenska">
-                Svenska
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="nav-link" to="/arabiska">
-                العربية
-              </NavLink>
-            </NavItem>
-          </NavList>   
+           
 
         </div>
       </Container>
