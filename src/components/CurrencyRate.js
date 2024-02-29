@@ -28,6 +28,7 @@ const RateContainer = styled.div`
 const CurrencyText = styled.span`
   font-weight: bold;
   color: #f1c232;
+  margin-left:10px;
 `;
 
 
