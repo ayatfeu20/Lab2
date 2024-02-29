@@ -52,16 +52,16 @@ const Footer = () => {
 
   return (
     <FooterContainer>
-      <div className='row align-items-center justify-content-center Footer-bottom'>
-        <p className='footer-brand'>
-          &copy;{new Date().getFullYear()} | Build by Ayat Mannaa | 
+      <div className="row align-items-center justify-content-center Footer-bottom">
+        <p className="footer-brand">
+          &copy;{new Date().getFullYear()} | Build by Ayat Mannaa |
         </p>
       </div>
       <BackToTopButton show={showButton} onClick={scrollToTop}>
-        <FaLongArrowAltUp className='d-flex arrow'/>
+        <FaLongArrowAltUp className="d-flex arrow" />
       </BackToTopButton>
     </FooterContainer>
   );
-}
+};
 
 export default Footer;

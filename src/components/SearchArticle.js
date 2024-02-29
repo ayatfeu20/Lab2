@@ -7,7 +7,6 @@ const SearchContainer = styled.div`
   align-items: center;
   margin-bottom: 20px;
   margin-top: 30px;
-  
 `;
 
 const SearchBox = styled.input`
@@ -15,7 +14,6 @@ const SearchBox = styled.input`
   margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  
 `;
 
 const SearchButton = styled.button`
@@ -26,8 +24,7 @@ const SearchButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   &:hover {
-    background-color: #007bff; 
-    
+    background-color: #007bff;
   }
 `;
 

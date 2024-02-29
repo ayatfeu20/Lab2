@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { ColorModeContext } from "../theme"; 
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const StyledNavBar = styled.nav`
@@ -22,10 +21,10 @@ const ToggleButton = styled.button`
 `;
 
 const NavList = styled.ul`
-  list-style: none; 
+  list-style: none;
   display: flex;
   align-items: center;
-  padding-bottom:10px;
+  padding-bottom: 10px;
 `;
 
 const NavItem = styled.li`
@@ -33,16 +32,16 @@ const NavItem = styled.li`
 `;
 
 const NavLink = styled(Link)`
-  color:inherit;  
+  color: inherit;
   text-decoration: none;
 
   &:hover {
-    color: ${(props) => props.theme.hoverColor};
+    color: #2267e9;
     font-weight: bold;
   }
 
   &.active {
-    color: ${(props) => props.theme.hoverColor};
+    color: #2267e9;
     font-weight: bold;
   }
 `;
@@ -50,27 +49,26 @@ const NavLink = styled(Link)`
 const LanguageLinks = styled.div`
   display: flex;
   align-items: center;
-  padding-left:25rem;
+  padding-left: 25rem;
 `;
 
 const LanguageLink = styled(Link)`
   margin-left: 20px;
   text-decoration: none;
-  color: inherit ;
+  color: inherit;
   &:hover {
-    color: ${(props) => props.theme.primaryColor}; 
+    color: #2267e9;
     font-weight: bold;
   }
 `;
 
 function NavBar2({ theme }) {
   const { setLanguage } = useLanguage();
-  const { toggleColorMode } = useContext(ColorModeContext);
 
   const switchLanguage = (lang) => {
     setLanguage(lang);
   };
-  
+
   return (
     <StyledNavBar backgroundColor={theme.backgroundColor}>
       <Container className="container-fluid">
@@ -123,8 +121,13 @@ function NavBar2({ theme }) {
               </NavLink>
             </NavItem>
             <LanguageLinks>
-              <LanguageLink to="#" onClick={() => switchLanguage('se')}>Svenska nyheter</LanguageLink>
-              <LanguageLink to="#" onClick={() => switchLanguage('ae')}> أخبار عربية</LanguageLink>
+              <LanguageLink to="#" onClick={() => switchLanguage('se')}>
+                Svenska nyheter
+              </LanguageLink>
+              <LanguageLink to="#" onClick={() => switchLanguage('ae')}>
+                {' '}
+                أخبار عربية
+              </LanguageLink>
             </LanguageLinks>
           </NavList>
         </div>

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Card = styled.div`
   .card {
@@ -48,12 +48,9 @@ const Card = styled.div`
 `;
 
 function NewsItem(props) {
-	let {
-		desc, title, imageURL,
-		newsUrl, sourceName
-	} = props;
-	return (
-		<Card>
+  let { desc, title, imageURL, newsUrl, sourceName } = props;
+  return (
+    <Card>
       <div className="card">
         <img src={imageURL} className="card-img-top" alt="..." />
         <div className="card-body">
@@ -71,7 +68,7 @@ function NewsItem(props) {
         </div>
       </div>
     </Card>
-	);
+  );
 }
 
 export default NewsItem;

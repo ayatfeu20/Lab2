@@ -1,7 +1,7 @@
-import React from "react";
-import NavBar2 from "./NavBar2";
-import News from "./News";
-import { LanguageProvider } from "../contexts/LanguageContext";
+import React from 'react';
+import NavBar2 from './NavBar2';
+import News from './News';
+import { LanguageProvider } from '../contexts/LanguageContext';
 
 function LanguageBasedNews() {
   return (
